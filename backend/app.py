@@ -13,6 +13,10 @@ model_data = joblib.load("cardio_model.pkl")
 model = model_data["model"]
 model_columns = model_data["columns"]
 
+@app.route("/")
+def home():
+    return "API is running successfully"
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
