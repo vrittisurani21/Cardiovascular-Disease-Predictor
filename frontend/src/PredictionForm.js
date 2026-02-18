@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./PredictionForm.css";
 
-// In production (Vercel) the API is at /api; in dev it's the Flask server on port 5000
-const API_BASE =
-  process.env.REACT_APP_API_URL ||
-  (process.env.NODE_ENV === "production" ? "" : "http://localhost:5000");
-const API_URL = API_BASE ? `${API_BASE.replace(/\/$/, "")}` : "/api";
+const API_URL = 
+  process.env.REACT_APP_API_URL || 
+  (process.env.NODE_ENV === "production" 
+    ? "https://cardiovascular-disease-predictor-8fi4.onrender.com" 
+    : "http://localhost:5000");
 
 function PredictionForm() {
   const [formData, setFormData] = useState({
