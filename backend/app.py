@@ -6,7 +6,16 @@ import pandas as pd
 app = Flask(__name__)
 
 # Allow the React dev server to call this API
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={
+    r"/*": {
+        "origins": [
+            "https://cardiovascular-disease-predictor-vs.vercel.app",
+            "http://localhost:3000"
+        ],
+        "methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization"]
+    }
+})
 
 # Load the model and feature columns once at startup (simple and explicit)
 model_data = joblib.load("cardio_model.pkl")
